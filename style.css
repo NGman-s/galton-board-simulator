@@ -1,0 +1,123 @@
+/* 基本样式 */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "main controls";
+    grid-template-columns: 3fr 1fr;
+    gap: 20px;
+}
+
+header {
+    grid-area: header;
+    text-align: center;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+}
+
+/* 主内容区: 模拟 + 结果 */
+.main-content {
+    grid-area: main;
+}
+
+.simulation-area {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: 500px; /* 模拟区域高度 */
+}
+
+#galton-canvas {
+    width: 100%;
+    height: 100%;
+}
+
+.results-area {
+    margin-top: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    height: 200px; /* 结果图表高度 */
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* 控制面板 */
+.controls {
+    grid-area: controls;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.controls h2 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.control-group {
+    margin-bottom: 20px;
+}
+
+.control-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.control-group input {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box; /* 让padding不影响宽度 */
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+#start-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+#reset-btn {
+    background-color: #dc3545;
+    color: white;
+}
+/* 滑块样式 */
+.control-group input[type="range"] {
+    width: 100%;
+}
+#speed-value {
+    font-weight: bold;
+    color: #007bff;
+}
+
+/* 署名样式 */
+.signature {
+    align-self: flex-end;
+    margin-top: auto;
+    font-size: 14px;
+    color: #666;
+    padding: 5px;
+}

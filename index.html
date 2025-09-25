@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高尔顿钉板模拟器</title>
+    <link rel="stylesheet" href="style.css">
+</head><body>
+
+    <div class="container">
+        <header>
+            <h1>高尔顿钉板模拟器</h1>
+        </header>
+
+        <main class="main-content">
+            <div class="simulation-area">
+                <canvas id="galton-canvas"></canvas>
+            </div>
+            <div class="results-area">
+                <div class="signature">Made by NGman ❤️</div>
+            </div>
+        </main>
+        
+        <aside class="controls">
+            <h2>控制面板</h2>
+            
+            <div class="control-group">
+                <label for="rows-input">钉子排数 (5-20):</label>
+                <input type="number" id="rows-input" value="12" min="5" max="20">
+            </div>
+            
+            <div class="control-group">
+                <label for="balls-input">小球数量:</label>
+                <input type="number" id="balls-input" value="1000" min="1">
+            </div>
+        
+            <div class="control-group">
+                <label for="speed-slider">模拟速度: <span id="speed-value">1x</span></label>
+                <input type="range" id="speed-slider" min="1" max="10" value="1" step="1">
+            </div>
+            
+            <div class="button-group">
+                <button id="start-btn">开始模拟</button>
+                <button id="reset-btn">重 置</button>
+            </div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
