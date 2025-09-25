@@ -121,3 +121,27 @@ button {
     color: #666;
     padding: 5px;
 }
+/* --- 在文件末尾追加以下代码 --- */
+
+/* 响应式设计：针对手机等窄屏幕 */
+@media (max-width: 768px) {
+    .container {
+        /* 将布局从“主内容+侧边栏”变为单列堆叠 */
+        grid-template-areas:
+            "header"
+            "main"
+            "controls";
+        grid-template-columns: 1fr; /* 设置为单列布局 */
+        padding: 10px;
+    }
+
+    .simulation-area {
+        /* 高度不再固定，而是根据宽度动态调整，保持一个合适的比例 */
+        height: 100vw; /* 高度等于屏幕宽度，可以根据喜好调整 */
+        max-height: 450px; /* 但最大不要超过450px */
+    }
+
+    .controls {
+        margin-top: 20px;
+    }
+}
