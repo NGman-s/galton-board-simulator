@@ -133,47 +133,5 @@ button {
             "controls";
         grid-template-columns: 1fr; /* 设置为单列布局 */
         padding: 10px;
-        margin: 0;
-    }
-    
-    body {
-        padding: 10px;
-    }
-    
-    h1 {
-        font-size: 1.8rem;
-        margin-top: 0;
-    }
-    
-    h2 {
-        font-size: 1.5rem;
-    }
-    
-    .simulation-area {
-        height: 300px; /* 减少手机屏幕上的模拟区域高度 */
-    }
-    
-    .results-area {
-        height: 150px; /* 减少手机屏幕上的结果区域高度 */
-    }
-    
-    .controls {
-        padding: 15px;
-    }
-    
-    .control-group input {
-        padding: 12px; /* 增加输入框高度，便于触摸 */
-        font-size: 16px; /* 防止iOS缩放 */
-    }
-    
-    button {
-        padding: 12px 20px; /* 增加按钮尺寸，便于触摸 */
-        font-size: 16px;
-        flex: 1;
-        margin: 0 5px;
-    }
-    
-    .button-group {
-        gap: 10px;
     }
 }

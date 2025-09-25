@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     class Ball {
         constructor(x, y, radius, color) {
             this.x = x; this.y = y; this.radius = radius; this.color = color;
-            this.vy = 0; this.vx = 0; this.gravity = 0.1; this.currentRow = 0;
+            this.vy = 0; this.vx = (Math.random() - 0.5) * 1.2; this.gravity = 0.1; this.currentRow = 0;
         }
         draw() {
             ctx.beginPath();
@@ -59,14 +59,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         hit = true;
                         // 改进的碰撞反应：基于钉子位置的随机反弹
                         // 保留部分原有速度，并添加随机分量
-                        const speedRetention = 0.1;   // 保留10%的速度
-                        const randomFactor = 0.9;   // 90%的随机分量
+                        const speedRetention = 0.01;   // 保留1%的速度
+                        const randomFactor = 0.99;   // 99%的随机分量
                         
                         // 基于碰撞点的反弹，完全随机分布
                         this.vx = this.vx * speedRetention + 
-                                 (Math.random() - 0.5) * randomFactor * 2;
+                                 (Math.random() - 0.5) * randomFactor * 3;
                         this.vy = this.vy * speedRetention + 
-                                 (Math.random() - 0.5) * randomFactor * 2;
+                                 (Math.random() - 0.5) * randomFactor * 3;
                         
                         // 确保小球不会卡在钉子里
                         const overlap = this.radius + boardParams.pinRadius - distance;
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // 当小球通过所有钉子行后，减少水平速度
             if (this.currentRow >= boardParams.rows) {
-                this.vx *= 0.98;
+                this.vx *= 0.99;
             }
         }
     }
@@ -112,16 +112,13 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 根据屏幕宽度调整参数
         if (canvas.width < 500) { // 手机屏幕
-            boardParams.pinRadius = 2; // 进一步减小钉子半径
+            boardParams.pinRadius = 5;
             boardParams.topPadding = 20;
-            boardParams.horizontalPadding = 15;
-            // 为手机屏幕设置更小的行间距比例，避免元素过于拥挤
-            boardParams.verticalSpacing = (canvas.height * 0.7) / rows;
+            boardParams.horizontalPadding = 20;
         } else { // 桌面屏幕
-            boardParams.pinRadius = 4;
+            boardParams.pinRadius = 6;
             boardParams.topPadding = 40;
             boardParams.horizontalPadding = 40;
-            boardParams.verticalSpacing = (canvas.height * 0.8) / rows;
         }
         
         boardParams.horizontalSpacing = (canvas.width - 2 * boardParams.horizontalPadding) / rows;
@@ -241,11 +238,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(ballCreationInterval);
                 return;
             }
-            // 扩大小球初始发射位置范围，使其覆盖顶部钉子区域
-            const startX = canvas.width / 2 + (Math.random() - 0.5) * boardParams.horizontalSpacing;
-            // 根据屏幕宽度调整小球半径
-            const ballRadius = canvas.width < 500 ? 3 : 5;
-            balls.push(new Ball(startX, 20, ballRadius, 'crimson'));
+            // 调整小球初始发射位置范围，使其更集中在中间
+            const startX = canvas.width / 2 + (Math.random() - 0.5) * boardParams.horizontalSpacing * 0.6;
+            balls.push(new Ball(startX, 20, 7, 'crimson'));
             droppedCount++;
         }, interval);
 
