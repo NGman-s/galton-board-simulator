@@ -109,9 +109,18 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateBoardParameters() {
         const rows = parseInt(rowsInput.value);
         boardParams.rows = rows;
-        boardParams.pinRadius = 4;
-        boardParams.topPadding = 40;
-        boardParams.horizontalPadding = 40;
+        
+        // 根据屏幕宽度调整参数
+        if (canvas.width < 500) { // 手机屏幕
+            boardParams.pinRadius = 3;
+            boardParams.topPadding = 20;
+            boardParams.horizontalPadding = 20;
+        } else { // 桌面屏幕
+            boardParams.pinRadius = 4;
+            boardParams.topPadding = 40;
+            boardParams.horizontalPadding = 40;
+        }
+        
         boardParams.horizontalSpacing = (canvas.width - 2 * boardParams.horizontalPadding) / rows;
         boardParams.verticalSpacing = (canvas.height * 0.8) / rows; 
         boardParams.numBins = rows + 1;
