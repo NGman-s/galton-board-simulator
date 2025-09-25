@@ -112,13 +112,16 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // 根据屏幕宽度调整参数
         if (canvas.width < 500) { // 手机屏幕
-            boardParams.pinRadius = 3;
+            boardParams.pinRadius = 2; // 进一步减小钉子半径
             boardParams.topPadding = 20;
-            boardParams.horizontalPadding = 20;
+            boardParams.horizontalPadding = 15;
+            // 为手机屏幕设置更小的行间距比例，避免元素过于拥挤
+            boardParams.verticalSpacing = (canvas.height * 0.7) / rows;
         } else { // 桌面屏幕
             boardParams.pinRadius = 4;
             boardParams.topPadding = 40;
             boardParams.horizontalPadding = 40;
+            boardParams.verticalSpacing = (canvas.height * 0.8) / rows;
         }
         
         boardParams.horizontalSpacing = (canvas.width - 2 * boardParams.horizontalPadding) / rows;
@@ -240,7 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             // 扩大小球初始发射位置范围，使其覆盖顶部钉子区域
             const startX = canvas.width / 2 + (Math.random() - 0.5) * boardParams.horizontalSpacing;
-            balls.push(new Ball(startX, 20, 5, 'crimson'));
+            // 根据屏幕宽度调整小球半径
+            const ballRadius = canvas.width < 500 ? 3 : 5;
+            balls.push(new Ball(startX, 20, ballRadius, 'crimson'));
             droppedCount++;
         }, interval);
 
