@@ -46,10 +46,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if (this.y + this.radius > nextRowY) {
                 if (this.currentRow < boardParams.rows) {
                     this.vx = (Math.random() < 0.5 ? -1 : 1) * 1.5;
-                    this.vy *= -0.3;
+                    // 确保球体碰撞后总是向下运动，并增加阻尼
+                    this.vy = Math.abs(this.vy) * 0.3;
                     this.currentRow++;
                 } else {
                     this.vx *= 0.98;
+                    // 在底部区域增加一些阻尼
+                    this.vy *= 0.98;
                 }
             }
         }
